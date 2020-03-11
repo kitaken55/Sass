@@ -1,0 +1,45 @@
+@mixin base_style($color:blue, $font...) {
+    background-color: aliceblue;
+    color: $color;
+    font: $font;
+}
+
+@mixin media($width) {
+    @media only screen and(max-width: $width){
+        @content
+    }
+}
+
+div {
+    font: {
+        size: 30px;
+        weight: bold;
+    }
+    border: {
+        radius: 20px;
+        bottom: 20px;
+    }
+    .class{
+        @include base_style(red, (bold Alial 18px));
+    }
+}
+
+#container {
+    @include media(600px) {
+        background: skyblue;
+    }
+}
+
+%msg {
+    padding: 10px;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.success {
+    @extend %msg;
+    margin: auto;
+    width: auto;
+    font-size: 30px;
+}
+
